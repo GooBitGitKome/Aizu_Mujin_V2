@@ -1,0 +1,29 @@
+[
+    {
+        "name" : "\"みんな\"のAMT",
+        "description" : "みんなで出し合って貯めたAMTポイントです。",
+        "type" : "display",
+        "label" : "関数で金額取得"
+    },
+    {
+        "name" : "\"あなた\"のAMT",
+        "description" : "現在所持しているAMTポイントです。",
+        "type" : "display",
+        "label" : "関数で金額取得"
+        
+    },
+    {
+        "name" : "あなたのAMTをみんなの銀行に貯める",
+        "description" : "あなたが現在所持しているAMTをみんなの銀行に貯める。",
+        "type" : "input",
+        "label" : "AMT",
+        "placeholder" : "入金するAMT"
+    },
+    {
+        "name" : "みんなのAMTを誰かに投資する",
+        "description" : "あなたが現在所持しているAMTを仲間の誰かに投資する。",
+        "type" : "input",
+        "label" : "宛先",
+        "placeholder" : "宛先アドレス"
+    }
+]
