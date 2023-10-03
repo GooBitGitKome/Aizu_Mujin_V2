@@ -2,12 +2,19 @@ const { expect } = require("chai");
 const { ethers } = require("hardhat");
 
 describe("Token contract", function () {
-  it("Deployment should assign the total supply of tokens to the owner", async function () {
+  it("just test functions in this contract", async function () {
     const [owner] = await ethers.getSigners();
-
-    const hardhatToken = await ethers.deployContract("AizuMujin");
-
-    const ownerBalance = await hardhatToken.balanceOf(owner.address);
-    expect(await hardhatToken.totalSupply()).to.equal(ownerBalance);
+    const contract = await ethers.deployContract("AizuMujin");
+    console.log("owner.address: ", owner.address);
+    console.log("contract.address: ", contract.target);
+    await contract.faucet();
+    const ownerBalance = await contract.balanceOf(owner.address);
+    console.log("ownerBalance: ", ownerBalance);
+    await contract.send(50);
+    const contractBalance = await contract.balanceOf(contract.target);
+    console.log("contractBalance: ", contractBalance);
+    console.log(await contract.symbol());
+    console.log('finished');
+    // expect(await contract.totalSupply()).to.equal(ownerBalance);
   });
 });

@@ -10,8 +10,6 @@ contract AizuMujin is ERC20 {
 
     uint256 private _totalSupply;
     uint256 private _totalDeposit;
-    string private _name;
-    string private _symbol;
     address private _owner;
 
     constructor() ERC20("Aizu Mujin Token", "AMT") {
@@ -38,7 +36,7 @@ contract AizuMujin is ERC20 {
         return _totalDeposit;
     }
 
-    function getBalande() public view returns(uint256){
+    function getMyBalance() public view returns(uint256){
         return balanceOf(msg.sender);
     }   
   

@@ -1,22 +1,21 @@
 import { ethers } from "hardhat";
+import fs from 'fs';
+import * as dotenv from "dotenv";
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  const [deployer] = await ethers.getSigners();
+  const contract = await ethers.deployContract("AizuMujin");
+  
+  const contractAddress = await contract.getAddress();
+  let addressJson ={
+    "deployer": deployer.address,
+    "address": contractAddress
+  };
 
-  const lockedAmount = ethers.parseEther("0.001");
-
-  const lock = await ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
-
-  await lock.waitForDeployment();
-
-  console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
-  );
+  let data = JSON.stringify(addressJson);
+  fs.writeFileSync(`${process.env.FILEPATH}hardhat/artifacts/contracts/AizuMujin.sol/contractAddress.json`, data);
+  console.log("Contract deployer:", deployer.address);
+  console.log("Contract deployed to:", contractAddress);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
