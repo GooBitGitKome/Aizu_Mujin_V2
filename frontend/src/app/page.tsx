@@ -116,7 +116,7 @@ export default function Home() {
     </div>
     </div>
     </main>
-    <footer className='h-[1000px] bg-green-500'>test</footer>
+    <footer className='h-[1000px] bg-slate-700'>test</footer>
     </ThirdwebProvider>
     </NextUIProvider>
     )
